@@ -5,6 +5,4 @@ def cria_baralho():
     for valor in lista_numeros:
         for naipe in lista_naipes:
             baralho.append("{}{}".format(valor,naipe))
-    
-    print(baralho)
     return baralho

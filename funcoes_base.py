@@ -9,5 +9,5 @@ def cria_baralho():
 def extrai_valor(carta):
     return carta[0:-1]
 def extrai_naipe(carta):
-return carta[-1]
+    return carta[-1]
 

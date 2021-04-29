@@ -6,3 +6,5 @@ def cria_baralho():
         for naipe in lista_naipes:
             baralho.append("{}{}".format(valor,naipe))
     return baralho
+def extrai_valor(carta):
+    return carta[0:-1]

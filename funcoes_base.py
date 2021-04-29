@@ -22,3 +22,6 @@ def lista_movimentos_possiveis(baralho,indice):
         if extrai_naipe(carta) == extrai_naipe(ter_anterior) or extrai_valor(carta) == extrai_valor(ter_anterior):
             movs.append(3)
     return movs
+def empilha(baralho,ori,dest):
+    baralho[dest] = baralho.pop(ori)
+    return baralho

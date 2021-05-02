@@ -34,6 +34,14 @@ def possui_movimentos_possiveis(baralho):
 
 regras = "Paciência Acordeão \n seja bem vindo(a) ao jogo de Paciência Acordeão! O objetivo deste jogo é  colocar todas as cartas em uma mesma pilha. \n Existem apenas dois movimentos possíveis \n 1. Empilhar uma carta sobre a carta imediatamente anterior \n 2. Empilhar uma carta sobre a terceira carta anterior. \n Para que um movimento possa ser realizado basta que uma das duas condições abaixo seja atendida: \n 1. As duas cartas possuem o mesmo valor ou \n 2. As duas cartas possuem o mesmo naipe. \n Desde que alguma das condições acima seja satisfeita, qualquer carta pode ser movimentada. \n Aperte [ENTER] para iniciar o jogo..."
 
+#função para testar se string pode virar inteiro, evitar erros
+def pode_int(string):
+    try:
+        int(string)
+        return True
+    except:
+        return  False
+
 
 def programa():
     inicio = "a"
@@ -55,3 +63,6 @@ def programa():
                     programa()
                 if not possui_movimentos_possiveis(baralho) and len(baralho) > 1 :
                     print("Você perdeu")
+                    programa()
+                else:
+                    programa()

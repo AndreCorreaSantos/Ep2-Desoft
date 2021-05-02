@@ -25,3 +25,9 @@ def lista_movimentos_possiveis(baralho,indice):
 def empilha(baralho,ori,dest):
     baralho[dest] = baralho.pop(ori)
     return baralho
+
+def possui_movimentos_possiveis(baralho):
+    for indice in range(0,len(baralho)):
+        if len(lista_movimentos_possiveis(baralho,indice)) > 0:
+            return True
+    return False

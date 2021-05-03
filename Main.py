@@ -1,4 +1,4 @@
-from funcoes_base 
+from funcoes_base import cria_baralho,intermediario,regras
 import random
 
 def programa():

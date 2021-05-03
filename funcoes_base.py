@@ -44,7 +44,6 @@ def pode_int(string):
 
     #recebe um baralho e retorna uma string formatada para ser imprimida na tela do jogador
 def situacao(baralho):
-    def situacao(baralho):
     string = ""
     for carta in baralho:
         string += '{}. {}{}\n'.format(baralho.index(carta)+1,extrai_valor(carta),extrai_naipe(carta))
@@ -84,4 +83,4 @@ def programa():
     random.shuffle(baralho)
     while inicio != "":
         inicio = input(regras)
-            intermediario()
+        intermediario()

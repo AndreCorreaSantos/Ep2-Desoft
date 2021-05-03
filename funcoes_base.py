@@ -83,4 +83,4 @@ def programa():
     random.shuffle(baralho)
     while inicio != "":
         inicio = input(regras)
-        intermediario()
+    intermediario()

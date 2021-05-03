@@ -42,7 +42,15 @@ def pode_int(string):
     except:
         return  False
 
-
+    #recebe um baralho e retorna uma string formatada para ser imprimida na tela do jogador
+def situacao(baralho):
+    def situacao(baralho):
+    string = ""
+    for carta in baralho:
+        string += '{}. {}{}\n'.format(baralho.index(carta)+1,extrai_valor(carta),extrai_naipe(carta))
+    string = "O Estado atual do baralho é: \n {} \n Escolha uma carta (digite um número entre 1 e {}):   ".format(string,len(baralho))
+    return string
+    
 def programa():
     inicio = "a"
     baralho = cria_baralho()

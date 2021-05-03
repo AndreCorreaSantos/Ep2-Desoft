@@ -52,24 +52,30 @@ def situacao(baralho):
     return string
     
  #funcao intermediaria que chama a si mesma, substituindo a necessidade de um loop--> funcao programa chama a intermediaria
-def intermediario():
-while True:
-    jogada = input(situacao(baralho))
-    if pode_int(jogada):
-        jogada = int(jogada)
-        jogada_index = jogada-1
-    if 1 <= jogada <= len(baralho) and len(lista_movimentos_possiveis(baralho,jogada_index)):
-        jogada_index = jogada-1
-        movimento = lista_movimentos_possiveis(baralho,jogada_index)[0]
-        baralho = empilha(baralho,jogada_index,jogada_index-movimento)
-        if not possui_movimentos_possiveis(baralho) and len(baralho) == 1:
-            print("Parabéns você ganhou")
-            programa()
-        if not possui_movimentos_possiveis(baralho) and len(baralho) > 1 :
-            print("Você perdeu")
-            programa()
+def intermediario(baralho):
+        jogada = input(situacao(baralho))
+        if pode_int(jogada):
+            jogada = int(jogada)
+            jogada_index = jogada-1
+            if 1 <= jogada <= len(baralho) and len(lista_movimentos_possiveis(baralho,jogada_index)):
+                jogada_index = jogada-1
+                movimento = lista_movimentos_possiveis(baralho,jogada_index)[0]
+                baralho = empilha(baralho,jogada_index,jogada_index-movimento)
+                if not possui_movimentos_possiveis(baralho) and len(baralho) == 1:
+                    print("Parabéns você ganhou")
+                    programa()
+                if not possui_movimentos_possiveis(baralho) and len(baralho) > 1 :
+                    print("Você perdeu")
+                    programa()
+                else:
+                    intermediario(baralho)
+                
+            else:
+                print("Posição inválida. Por favor, digite um número entre 1 e 52.")
+                intermediario(baralho)
         else:
-            programa()
+            print("Posição inválida. Por favor, digite um número entre 1 e 52).")
+            intermediario(baralho)
                     
 
 def programa():

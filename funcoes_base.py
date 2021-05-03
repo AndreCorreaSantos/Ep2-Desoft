@@ -1,4 +1,4 @@
-import random
+
 def cria_baralho():
     lista_naipes = ["♠","♥","♣","♦"]
     lista_numeros = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"]
@@ -78,11 +78,11 @@ def intermediario(baralho):
             intermediario(baralho)
                     
 
-def programa():
-    inicio = "a"
-    baralho = cria_baralho()
-    random.shuffle(baralho)
-    while inicio != "":
-        inicio = input(regras)
-    intermediario(baralho)
-programa()
+#def programa():
+#    inicio = "a"
+ #   baralho = cria_baralho()
+  #  random.shuffle(baralho)   ----> bloco de codigo foi movido para main(). Esse arquivo foi transformado em módulo de funções.
+   # while inicio != "":
+    #    inicio = input(regras)
+   # intermediario(baralho)
+#programa()

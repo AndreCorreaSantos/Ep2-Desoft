@@ -1,4 +1,3 @@
-
 def cria_baralho():
     lista_naipes = ["♠","♥","♣","♦"]
     lista_numeros = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"]
@@ -7,10 +6,13 @@ def cria_baralho():
         for naipe in lista_naipes:
             baralho.append("{}{}".format(valor,naipe))
     return baralho
+
 def extrai_valor(carta):
     return carta[0:-1]
+
 def extrai_naipe(carta):
     return carta[-1]
+
 def lista_movimentos_possiveis(baralho,indice):
     movs = []
     carta = baralho[indice]
@@ -50,39 +52,20 @@ def situacao(baralho):
         string += '{}. {}{}\n'.format(baralho.index(carta)+1,extrai_valor(carta),extrai_naipe(carta))
     string = "O Estado atual do baralho é: \n {} \n Escolha uma carta (digite um número entre 1 e {}):   ".format(string,len(baralho))
     return string
-    
- #funcao intermediaria que chama a si mesma, substituindo a necessidade de um loop--> funcao programa chama a intermediaria
-def intermediario(baralho):
-        jogada = input(situacao(baralho))
-        if pode_int(jogada):
-            jogada = int(jogada)
-            jogada_index = jogada-1
-            if 1 <= jogada <= len(baralho) and len(lista_movimentos_possiveis(baralho,jogada_index)):
-                jogada_index = jogada-1
-                movimento = lista_movimentos_possiveis(baralho,jogada_index)[0]
-                baralho = empilha(baralho,jogada_index,jogada_index-movimento)
-                if not possui_movimentos_possiveis(baralho) and len(baralho) == 1:
-                    print("Parabéns você ganhou")
-                    programa()
-                if not possui_movimentos_possiveis(baralho) and len(baralho) > 1 :
-                    print("Você perdeu")
-                    programa()
-                else:
-                    intermediario(baralho)
-                
-            else:
-                print("Posição inválida. Por favor, digite um número entre 1 e 52.")
-                intermediario(baralho)
-        else:
-            print("Posição inválida. Por favor, digite um número entre 1 e 52).")
-            intermediario(baralho)
-                    
 
-#def programa():
-#    inicio = "a"
- #   baralho = cria_baralho()
-  #  random.shuffle(baralho)   ----> bloco de codigo foi movido para main(). Esse arquivo foi transformado em módulo de funções.
-   # while inicio != "":
-    #    inicio = input(regras)
-   # intermediario(baralho)
-#programa()
+#funcao para fazer o display dos movimentos e a formatacao da string da escolha entre empilhar sobre a primeira carta ou sobre a terceira
+def escolha(lista,jogada):
+    jogada = lista[jogada]
+    return "Sobre qual carta você quer empilhar o {}{}? \n 1.{}{} \n 2.{}{} \n".format(extrai_valor(jogada),extrai_naipe(jogada),extrai_valor(lista[0]),extrai_naipe(lista[0]),extrai_valor(lista[1]),extrai_naipe(lista[1]))
+    
+#funcao para mostrar as cartas que o usuario pode empilhar (caso haja mais que uma) e que chama a si mesma caso o usuario digite uma posição errada
+def rec2(baralho,jogada_index):
+    esc = input(escolha(baralho,jogada_index))
+    if esc == "1":
+        movimento = lista_movimentos_possiveis(baralho,jogada_index)[0]
+    elif esc == "2":
+        movimento =  lista_movimentos_possiveis(baralho,jogada_index)[1]
+    else:
+        print("Posição inválida, por favor digite uma posição válida")
+        rec2(baralho,jogada_index)
+    return movimento

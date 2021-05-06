@@ -56,8 +56,7 @@ def situacao(baralho):
 #funcao para fazer o display dos movimentos e a formatacao da string da escolha entre empilhar sobre a primeira carta ou sobre a terceira
 def escolha(lista,jogada):
     jogada = lista[jogada]
-    return "Sobre qual carta você quer empilhar o {}{}? \n 1.{}{} \n 2.{}{} \n".format(extrai_valor(jogada),extrai_naipe(jogada),extrai_valor(lista[0]),extrai_naipe(lista[0]),extrai_valor(lista[1]),extrai_naipe(lista[1]))
-    
+    return "Sobre qual carta você quer empilhar o {}{}? \n 1.{}{} \n 2.{}{} \n".format(extrai_valor(jogada),extrai_naipe(jogada),extrai_valor(lista[lista.index(jogada)-1]),extrai_naipe(lista[lista.index(jogada)-1]),extrai_valor(lista[lista.index(jogada)-3]),extrai_naipe(lista[lista.index(jogada)-3]))
 #funcao para mostrar as cartas que o usuario pode empilhar (caso haja mais que uma) e que chama a si mesma caso o usuario digite uma posição errada
 def rec2(baralho,jogada_index):
     esc = input(escolha(baralho,jogada_index))

@@ -61,10 +61,9 @@ def escolha(lista,jogada):
 def rec2(baralho,jogada_index):
     esc = input(escolha(baralho,jogada_index))
     if esc == "1":
-        movimento = lista_movimentos_possiveis(baralho,jogada_index)[0]
-    elif esc == "2":
-        movimento =  lista_movimentos_possiveis(baralho,jogada_index)[1]
+        return lista_movimentos_possiveis(baralho,jogada_index)[0]
+    if esc == "2":
+        return lista_movimentos_possiveis(baralho,jogada_index)[1]
     else:
-        print("Posição inválida, por favor digite uma posição válida")
+        print("Posição inválida, por favor digite 1 ou 2.")
         rec2(baralho,jogada_index)
-    return movimento

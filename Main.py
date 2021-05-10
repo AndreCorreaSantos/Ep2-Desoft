@@ -12,9 +12,11 @@ def programa():
 #funcao intermediaria que chama a si mesma, substituindo a necessidade de um loop para cada rodada
 def intermediario(baralho):
         jogada = input(situacao(baralho))
+        #checa se o usuário digitou um número
         if pode_int(jogada):
             jogada = int(jogada)
             jogada_index = jogada-1
+            #checa se o usuário digitou uma posição válida
             if 1 <= jogada <= len(baralho) and len(lista_movimentos_possiveis(baralho,jogada_index)):
                 jogada_index = jogada-1
                 movimento = lista_movimentos_possiveis(baralho,jogada_index)[0]
@@ -32,10 +34,10 @@ def intermediario(baralho):
                 else:
                     intermediario(baralho)
             else:
-                print("Posição inválida. Por favor, digite um número entre 1 e 52.")
+                print("Posição inválida. Por favor, digite um número entre 1 e {}.".format(len(baralho)))
                 intermediario(baralho)
         else:
-            print("Posição inválida. Por favor, digite um número entre 1 e 52).")
+            print("Posição inválida. Por favor, digite um número entre 1 e {}.".format(len(baralho)))
             intermediario(baralho)
 
 programa()

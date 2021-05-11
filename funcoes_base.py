@@ -1,3 +1,6 @@
+from colorama import *
+#inicializando biblioteca para colorir os caracteres
+init()
 def cria_baralho():
     lista_naipes = ["♠","♥","♣","♦"]
     lista_numeros = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"]
@@ -44,19 +47,29 @@ def pode_int(string):
         return True
     except:
         return  False
-
+#função para printar cartas coloridas segundo seus naipes
+def colore(carta):
+    if extrai_naipe(carta) == "♥":
+        return Fore.RED + carta
+    if extrai_naipe(carta) == "♠":
+        return Fore.BLUE + carta
+    if extrai_naipe(carta) == "♦":
+        return Fore.CYAN + carta
+    if extrai_naipe(carta) == "♣":
+        return Fore.GREEN + carta
     #recebe um baralho e retorna uma string formatada para ser imprimida na tela do jogador
 def situacao(baralho):
     string = ""
     for carta in baralho:
-        string += '{}. {}{}\n'.format(baralho.index(carta)+1,extrai_valor(carta),extrai_naipe(carta))
-    string = "O Estado atual do baralho é: \n {} \n Escolha uma carta (digite um número entre 1 e {}):   ".format(string,len(baralho))
-    return string
+        string += '{}. {}\n'.format(str(baralho.index(carta)+1),colore(carta)+Style.RESET_ALL)
+    string = "O Estado atual do baralho é: \n {} \n".format(string)
+    string2 = Style.RESET_ALL + "Escolha uma carta (digite um número entre 1 e {}):   ".format(len(baralho))
+    return string + string2
 
 #funcao para fazer o display dos movimentos e a formatacao da string da escolha entre empilhar sobre a primeira carta ou sobre a terceira
 def escolha(lista,jogada):
     jogada = lista[jogada]
-    return "Sobre qual carta você quer empilhar o {}{}? \n 1.{}{} \n 2.{}{} \n".format(extrai_valor(jogada),extrai_naipe(jogada),extrai_valor(lista[lista.index(jogada)-1]),extrai_naipe(lista[lista.index(jogada)-1]),extrai_valor(lista[lista.index(jogada)-3]),extrai_naipe(lista[lista.index(jogada)-3]))
+    return "Sobre qual carta você quer empilhar o {}? \n 1.{} \n 2.{} \n".format(jogada,colore(lista[lista.index(jogada)-1])+Style.RESET_ALL,colore(lista[lista.index(jogada)-3])+Style.RESET_ALL)
 #funcao para mostrar as cartas que o usuario pode empilhar (caso haja mais que uma) e que chama a si mesma caso o usuario digite uma posição errada
 def rec2(baralho,jogada_index):
     esc = input(escolha(baralho,jogada_index))

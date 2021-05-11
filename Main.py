@@ -23,7 +23,7 @@ def intermediario(baralho):
                 #parte de escolha sobre qual carta empilhar, se houver mais de uma carta disponivel para empilhar
                 if len(lista_movimentos_possiveis(baralho,jogada_index)) > 1:
                     #função recursiva que se chama para evitar erros caso o jogador digite posição inválida
-                    rec2(baralho,jogada_index)
+                    movimento = rec2(baralho,jogada_index)
                 baralho = empilha(baralho,jogada_index,jogada_index-movimento)
                 if not possui_movimentos_possiveis(baralho) and len(baralho) == 1:
                     print("Parabéns você ganhou")
